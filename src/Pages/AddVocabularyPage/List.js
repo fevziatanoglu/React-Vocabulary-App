@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useVocabulary } from "../../contexts/vocabularyListContext";
 import WordItem1 from "./ListItem";
 
+import {AiOutlineSearch} from "react-icons/ai";
+
 function VocabularyList() {
 
     const { vocabularyList } = useVocabulary();
@@ -10,17 +12,25 @@ function VocabularyList() {
     const handleOnChange = (e) => { setSearch({ ...search, [e.target.name]: e.target.value }) }
 
     return (
-        <div className="row justify-content-center rounded mt-3 mb-3">
-            {/* search bar */}
-            <input className="col-4" placeholder="enter a word" name="word" onChange={handleOnChange}></input>
-            <input className="col-4" placeholder="enter a meaning" name="meaning" onChange={handleOnChange}></input>
-            <button className="btn btn-light col-2 fw-bold text-primary" >SEARCH</button>
-            {/* vocabulary list */}
 
-            <div className="mt-2">
+        <>
+            <form >
+                {/* search bar */}
+                <input  placeholder="Search a word" name="word" onChange={handleOnChange}></input>
+                <input  placeholder="Search a meaning" name="meaning" onChange={handleOnChange}></input>
+                <div className="search-icon" >
+                    <AiOutlineSearch/>
+                </div>
+                {/* vocabulary list */}
+
+
+
+            </form>
+
+            <div className="list">
                 {wordList.map((vocable, key) => { return <WordItem1 key={key} vocable={vocable} /> })}
             </div>
-        </div>
+        </>
     )
 }
 

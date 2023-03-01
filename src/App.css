@@ -1,8 +1,15 @@
 .App {
-  text-align: center;
+  margin: 0 auto;
+  /* max-width: 1200px; */
+  /* background: repeating-linear-gradient(rgb(130, 130, 236), rgb(198, 213, 210) ,  rgb(255, 101, 101)); */
+  background: var(--primary);
+  height: 100vh;
+  color : var(--text);
 }
 
-.App-logo {
+
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +42,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

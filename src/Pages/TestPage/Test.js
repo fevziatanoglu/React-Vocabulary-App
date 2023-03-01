@@ -4,7 +4,10 @@ import { useVocabulary } from "../../contexts/vocabularyListContext";
 
 function Test() {
 
-    const { vocabularyList , changeCounter } = useVocabulary();
+    // to show finish screen
+    const [ isFinished, setFinished ] = useState(false);
+    // context functions
+    const { vocabularyList, changeCounter } = useVocabulary();
     // to hold 4 meaning of vocables
     const [answers, setAnswers] = useState([])
     // get vocabulary list in random order 
@@ -29,35 +32,36 @@ function Test() {
     }
 
     const checkAnswer = (e) => {
-        
+
         if (isClicked == false) {
             setIsClicked(true);
             // true answer case
             if (e.target.value === questionVocable.meaning) {
                 console.log("true");
-                changeCounter(questionVocable , true)
+                changeCounter(questionVocable, true)
                 // make button bg green
-                e.target.classList.add("bg-success")
+                e.target.classList.add("answer-true")
             }
             // false answer case
             else {
                 console.log("false");
-                changeCounter(questionVocable , false);
+                changeCounter(questionVocable, false);
                 // make button bg red
-                e.target.classList.add("bg-danger");
+                e.target.classList.add("answer-false");
                 // add question vocable to ask again later 
                 setQuestionVocabularyList(questionVocabularyList.push(questionVocable));
             }
 
             setTimeout(function () {
-                e.target.classList.remove("bg-success");
-                e.target.classList.remove("bg-danger");
-                if(questionVocabularyList.length > 4){
-                     getRandomVocable();
-                }else{
+                e.target.classList.remove("answer-true");
+                e.target.classList.remove("answer-false");
+                if (questionVocabularyList.length > 4) {
+                    getRandomVocable();
+                } else {
+                    setFinished(true);
                     console.log("test is done!");
                 }
-               
+
                 setIsClicked(false);
             }, 1500);
         }
@@ -85,22 +89,40 @@ function Test() {
 
 
     return (
+        <>
+            {isFinished
 
-        <div className="col bg-info m-5 p-5 border border-4 rounded ">
+                ? <div className="finish-div">
+                        <h1>
+                            Test is done!
+                        </h1>
+
+                        <a href="vocabularyPage" className="start-btn">
+                            GO VOCABULARY
+                        </a>
+                </div>
+
+                : <div className="test-div">
 
 
-            {/* <button onClick={(e) => getRandomVocable()}>Test</button> */}
+                    {/* <button onClick={(e) => getRandomVocable()}>Test</button> */}
 
-            <h1 className="fw-bold display-3">{questionVocable.word}</h1>
+                    <h1 className="question-text">{questionVocable.word}</h1>
+                    <div className="answers-div">
 
-            <button className="btn btn-primary m-1" onClick={(e) => checkAnswer(e)} value={answers[0]}>{answers[0]}</button>
-            <button className="btn btn-primary m-1" onClick={(e) => checkAnswer(e)} value={answers[1]}>{answers[1]}</button>
-            <button className="btn btn-primary m-1" onClick={(e) => checkAnswer(e)} value={answers[2]}>{answers[2]}</button>
-            <button className="btn btn-primary m-1" onClick={(e) => checkAnswer(e)} value={answers[3]}>{answers[3]}</button>
 
-            <button onClick={(e)=> console.log(questionVocabularyList)}> test</button>
+                        <button className="answer-btn" onClick={(e) => checkAnswer(e)} value={answers[0]}>{answers[0]}</button>
+                        <button className="answer-btn" onClick={(e) => checkAnswer(e)} value={answers[1]}>{answers[1]}</button>
+                        <button className="answer-btn" onClick={(e) => checkAnswer(e)} value={answers[2]}>{answers[2]}</button>
+                        <button className="answer-btn" onClick={(e) => checkAnswer(e)} value={answers[3]}>{answers[3]}</button>
+                    </div>
+                </div>
+              
+            }
 
-        </div>
+
+        </>
+
     )
 }
 

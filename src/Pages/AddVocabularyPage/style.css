@@ -1,0 +1,147 @@
+main {
+    margin: 0;
+    padding: 0;
+}
+
+form,
+.list {
+    width: 90%;
+    gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+
+input{
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--secondary);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--text);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+  
+
+.btn-add {
+    background-color: rgb(22, 112, 22);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.btn-add:disabled {
+    background-color: rgb(16, 80, 16);
+    opacity: .5;
+}
+
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+}
+
+button {
+    border-radius: 0.5rem;
+    border: 3px solid white;
+    background: var(--secondary);
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.list {
+    background-color: var(--secondary);
+    display: flex;
+   
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 40%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    scroll-behavior: smooth;
+}
+
+.list-item {
+    background-color: var(--primary);
+    padding: 1rem;
+    padding-left: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 4px solid var(--secondary);
+    border-radius: 0.5rem;
+}
+
+ /* scroll bar */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: gray; 
+  }
+
+.delete-btn , .edit-btn{
+    margin: 0.5rem;
+    font-size: 1.6rem;
+    padding-top: 6px;
+}
+
+.delete-btn ,.no-btn{
+    background: rgb(220, 62, 62);
+   
+}
+
+.edit-btn , .yes-btn{
+    background-color: rgb(29, 122, 29);
+}
+
+.yes-no-div{
+    display: flex;
+    gap: 0.3rem;
+}
+

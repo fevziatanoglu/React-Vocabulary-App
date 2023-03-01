@@ -1,23 +1,32 @@
+import { AiFillStar } from "react-icons/ai";
 import { useVocabulary } from "../../contexts/vocabularyListContext";
 
-function List1({vocabularyList}) {
+function List1({ vocabularyList }) {
 
-    const { setFavoriteVocable} = useVocabulary();
-    
-    return <div className="row  gap-2 justify-content-center p-1 mx-2">
-        {vocabularyList.map((vocable , key) => {
+    const { setFavoriteVocable } = useVocabulary();
+
+    return <div className="row gap-2 justify-content-center p-1 mx-2 list1">
+        {vocabularyList.map((vocable, key) => {
             key = vocable.word;
-            return <div className={`${vocable.isFavorite ? "bg-success text-primary" : "bg-light text-dark"} col-2 justify-content-center  rounded  border border-primary border-5 p-1 `}>
+            return <div className={`${vocable.isFavorite ? "favorite1" : ""} list-item1 `}>
+                {/* favorite div */}
+                <div className="favorite-button-div">
+                    {/* favorite button */}
+                    <button onClick={(e) => setFavoriteVocable(vocable)} className="col-2 mx-1  rounded bg-success text-primary fw-bold">
+                        <AiFillStar/>
+                    </button>
+                </div>
 
-                <div className="row justify-content-end"> 
-                
-                <button onClick={(e)=> setFavoriteVocable(vocable)} className="col-2 mx-1  rounded bg-success text-primary fw-bold">*</button>
-                
-                 </div>
-                <div className="fw-bold"> {vocable.word}</div>
-                <div className=""> {vocable.meaning}</div>
-                <div>{vocable.trueCounter}</div>
-                <div>{vocable.falseCounter}</div>
+                {/* datas */}
+                <div className="list-item-data1">
+
+                    <div className="fw-bold data"> {vocable.word}</div>
+                    <div className="data"> {vocable.meaning}</div>
+                    {/* <div className="data">{vocable.trueCounter}</div> */}
+                    {/* <div className="data">{vocable.falseCounter}</div> */}
+
+                </div>
+
             </div>
         })}
 

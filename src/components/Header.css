@@ -1,0 +1,62 @@
+*{
+    color : var(--text);
+    
+}
+
+header{
+    background: var(--secondary);
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    
+   
+}
+
+a{
+    text-decoration: none;
+}
+
+header a h1{
+    
+    margin: 0;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+header p{
+   color: var(--text);
+    margin: 0;
+    font-size: 0.9em;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    gap :2.4rem;
+}
+
+/* nav ul li a */
+nav a{
+    
+text-decoration: none;
+text-transform: uppercase;
+font-size: 1rem;
+position: relative;
+}
+
+nav a.active::before{
+    position: absolute;
+    content: "";
+    width: 35%;
+    border-bottom: 3px solid var(--primary);
+    bottom: -1px;
+}
+
+.thema-btn{
+    display: flex;
+    align-items: center;
+    border: none;
+    font-size: 1.5rem;
+}
+
